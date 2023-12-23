@@ -1,0 +1,61 @@
+body {
+  background-color: #ffffcc;
+  font-family: "Georgia", serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+header {
+  background-color: #333;
+  border-bottom: 0.5vw solid #666;
+  color: white;
+  padding: 1vw 0;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+}
+
+.map-container {
+  display: inline-block;
+  margin: 1vh 0;
+  padding: 1vh;
+  position: relative;
+}
+
+.map {
+  height: auto;
+  width: 100%;
+}
+
+.coordinates {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  position: absolute;
+  right: 0.75vw;
+  top: 3.5vh;
+}
+
+footer {
+  background-color: #333;
+  border-top: 0.5vw solid #666;
+  color: white;
+  position: absolute;
+  width: 100%;
+}
+footer a {
+  color: white;
+  text-decoration: underline;
+}
+footer p {
+  padding-left: 1.5vw;
+}
+
+@media only screen and (max-width: 600px) {
+  footer {
+    bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

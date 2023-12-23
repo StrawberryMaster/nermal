@@ -1,0 +1,76 @@
+// Variables for colors and spacing
+$body-bg: #ffffcc;
+$header-bg: #333;
+$border-color: #666;
+$text-color: white;
+$vh: 1vh;
+$vw: 1vw;
+
+// Base styles
+body {
+  background-color: $body-bg;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Header styles
+header {
+  background-color: $header-bg;
+  border-bottom: 0.5*$vw solid $border-color;
+  color: $text-color;
+  padding: 1*$vw 0;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+// Map container styles
+.map-container {
+  display: inline-block;
+  margin: 1*$vh 0;
+  padding: 1*$vh;
+  position: relative;
+}
+
+.map {
+  height: auto;
+  width: 100%;
+}
+
+// Coordinates styles
+.coordinates {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+// Footer styles
+footer {
+  background-color: $header-bg;
+  border-top: 0.5*$vw solid $border-color;
+  color: $text-color;
+  position: absolute;
+  width: 100%;
+
+  a {
+    color: $text-color;
+    text-decoration: underline;
+  }
+
+  p {
+    padding-left: 1.5*$vw;
+  }
+}
+
+// Media query for smaller screens
+@media only screen and (max-width: 600px) {
+  footer {
+    bottom: 0;
+  }
+}
