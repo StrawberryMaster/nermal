@@ -1,0 +1,64 @@
+/* styles for the map page */
+body {
+    background-color: #ffffcc;
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+header {
+    background-color: #333;
+    border-bottom: .5dvw solid #666;
+    color: white;
+    padding: 1dvw 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.map-container {
+    display: inline-block;
+    margin: 1dvh 0;
+    padding: 1dvh;
+    position: relative;
+}
+
+.map {
+    height: auto;
+    width: 100%;
+}
+
+.coordinates {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: .2rem;
+    padding: .2rem .4rem;
+    position: absolute;
+    right: .75dvw;
+    top: 3dvh;
+}
+
+footer {
+    background-color: #333;
+    border-top: .5dvw solid #666;
+    color: white;
+    position: absolute;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer p {
+    padding-left: 1.5dvw;
+}
+
+/* a bit of a lazy hack, but we're getting there */
+@media only screen and (max-width: 600px) {
+    footer {
+        bottom: 0;
+    }
+}
