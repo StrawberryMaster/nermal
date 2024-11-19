@@ -1,76 +1,190 @@
-// Variables for colors and spacing
-$body-bg: #ffffcc;
-$header-bg: #333;
-$border-color: #666;
-$text-color: white;
-$vh: 1vh;
-$vw: 1vw;
+// Variables & Settings
+$colors: (
+  'body': #ffffcc,
+  'header': #333,
+  'border': #666,
+  'text': #fff,
+  'overlay': rgba(255, 255, 255, 0.7)
+);
+
+$spacing: (
+  'xs': 0.2rem,
+  'sm': 0.4rem,
+  'md': 1rem,
+  'lg': 1.5rem
+);
+
+$breakpoints: (
+  'mobile': 600px,
+  'tablet': 768px,
+  'desktop': 1024px
+);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin responsive($breakpoint) {
+  @media only screen and (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// CSS Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 // Base styles
 body {
-  background-color: $body-bg;
+  background-color: map-get($colors, 'body');
   font-family: 'Georgia', serif;
   line-height: 1.6;
-  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  // Improve font rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Header styles
 header {
-  background-color: $header-bg;
-  border-bottom: 0.5*$vw solid $border-color;
-  color: $text-color;
-  padding: 1*$vw 0;
+  background-color: map-get($colors, 'header');
+  border-bottom: 0.5vw solid map-get($colors, 'border');
+  color: map-get($colors, 'text');
+  padding: 1vw 0;
   text-align: center;
 
   h1 {
     margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
 // Map container styles
 .map-container {
-  display: inline-block;
-  margin: 1*$vh 0;
-  padding: 1*$vh;
+  flex: 1;
+  margin: 1vh auto;
+  padding: 1vh;
   position: relative;
+  max-width: 1200px;
+  width: 95%;
+
+  @include responsive('tablet') {
+    width: 98%;
+  }
 }
 
 .map {
   height: auto;
   width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 // Coordinates styles
 .coordinates {
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 0.2rem;
-  padding: 0.2rem 0.4rem;
+  @include glass-effect;
+  border-radius: map-get($spacing, 'xs');
+  padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
   position: absolute;
-  right: 1em;
-  top: 1em;
+  right: map-get($spacing, 'md');
+  top: map-get($spacing, 'md');
+  font-family: 'Consolas', monospace;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
 }
 
 // Footer styles
 footer {
-  background-color: $header-bg;
-  border-top: 0.5*$vw solid $border-color;
-  color: $text-color;
-  position: absolute;
-  width: 100%;
+  background-color: map-get($colors, 'header');
+  border-top: 0.5vw solid map-get($colors, 'border');
+  color: map-get($colors, 'text');
+  padding: map-get($spacing, 'md');
+  margin-top: auto;
 
   a {
-    color: $text-color;
-    text-decoration: underline;
+    color: map-get($colors, 'text');
+    text-decoration: none;
+    border-bottom: 1px dotted currentColor;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: lighten(map-get($colors, 'text'), 20%);
+      border-bottom-style: solid;
+    }
   }
 
   p {
-    padding-left: 1.5*$vw;
+    text-align: center;
+    font-size: 0.9rem;
+
+    @include responsive('mobile') {
+      font-size: 0.8rem;
+    }
   }
 }
 
-// Media query for smaller screens
-@media only screen and (max-width: 600px) {
+// Loading animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.map-container {
+  animation: fadeIn 0.5s ease-in;
+}
+
+// Print styles
+@media print {
+
+  header,
   footer {
-    bottom: 0;
+    display: none;
+  }
+
+  .map-container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .coordinates {
+    display: none;
   }
 }

@@ -2,32 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Danula testing ground</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Danula testing ground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="A testing ground for the Danula world map">
-    <meta name="author" content="StrawberryMaster, AsrielTheLatvian">
+  <meta name="description" content="A testing ground for the Danula world map">
+  <meta name="author" content="StrawberryMaster, AsrielTheLatvian">
 
-    <link rel="icon" href="media/favicon.ico">
-    <link rel="stylesheet" href="styles/styles.css">
+  <link rel="icon" href="media/favicon.ico">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
-    <header>
-        <h1>Danula testing ground</h1>
-      </header>
+  <header>
+    <h1>Danula testing ground</h1>
+  </header>
 
-    <div class="map-container">
-        <img src="media/realcolorentireworld.png" class="map" usemap="#map">
-        <div class="coordinates" id="hover-coordinates"></div>
-    </div>
+  <div class="map-container">
+    <img src="media/realcolorentireworld.png" class="map" usemap="#map">
+    <div class="coordinates" id="hover-coordinates"></div>
+  </div>
 
-    <footer>
-        <p>Created by <a href="https://github.com/StrawberryMaster">StrawberryMaster</a>. "Danula" and all related content is owned by AsrielTheLatvian.</p>
-      </footer>
+  <footer>
+    <p>Created by <a href="https://github.com/StrawberryMaster">StrawberryMaster</a>. "Danula" and all related content
+      is owned by AsrielTheLatvian.</p>
+  </footer>
 
-    <script src="scripts/nermal.js"></script>
+  <script src="scripts/nermal.js"></script>
+  <script>
+    const tracker = new MapCoordinatesTracker('.map', 'hover-coordinates', {
+      precision: 2,
+      useThrottle: true,
+      throttleInterval: 16  // ~60fps
+    });
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,21 @@
+{
+  "name": "nermal",
+  "version": "1.0.0",
+  "description": "A testing ground for a Danula map",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "node-sass": "^9.0.0",
+    "typescript": "^5.6.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "type-check": "tsc --noEmit",
+    "sass": "sass ./styles:styles --watch",
+    "sass:build": "sass styles/:styles --style compressed"    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
