@@ -98,7 +98,7 @@ class NermalApp {
         if (!input.files || !input.files[0]) return;
         const file = input.files[0];
         if (!/^image\/(png|jpeg|webp)$/.test(file.type)) {
-            alert('Formato de imagem não suportado.');
+            alert('File type not supported. Yet.');
             return;
         }
         const reader = new FileReader();
