@@ -171,20 +171,79 @@ footer {
   animation: fadeIn 0.5s ease-in;
 }
 
-// Print styles
-@media print {
+// Earth tones e temas
+$earth-light: #f5ecd7;
+$earth-dark: #2d2a26;
+$earth-accent: #bfae8e;
+$earth-border: #7c6f57;
+$earth-highlight: #e0cfa9;
 
-  header,
-  footer {
-    display: none;
+body[data-theme='dark'] {
+  background-color: $earth-dark;
+  color: $earth-highlight;
+
+  header, footer {
+    background-color: darken($earth-dark, 5%);
+    color: $earth-accent;
+    border-color: $earth-border;
   }
 
-  .map-container {
-    margin: 0;
-    padding: 0;
+  .coordinates, .toolbar, .pin {
+    background: rgba(40, 40, 40, 0.7);
+    color: $earth-highlight;
+    border-color: $earth-border;
+  }
+}
+
+// Toolbar
+.toolbar {
+  @include flex-center;
+  gap: map-get($spacing, 'sm');
+  margin: map-get($spacing, 'sm') 0;
+
+  input[type="file"] {
+    font-family: inherit;
+    font-size: 1rem;
   }
 
-  .coordinates {
-    display: none;
+  button {
+    background: $earth-accent;
+    color: $earth-dark;
+    border: 1px solid $earth-border;
+    border-radius: 4px;
+    padding: 0.3em 0.8em;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+
+    &:hover {
+      background: $earth-highlight;
+      color: $earth-dark;
+      transform: scale(1.05);
+    }
   }
+}
+
+// Pin layer e pins
+.pin-layer {
+  pointer-events: none;
+  z-index: 10;
+}
+
+.pin {
+  pointer-events: auto;
+  user-select: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  &:hover {
+    transform: scale(1.2);
+    z-index: 100;
+  }
+}
+
+// Grid overlay
+#grid-overlay {
+  z-index: 5;
+  pointer-events: none;
 }

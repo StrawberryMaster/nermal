@@ -15,20 +15,48 @@ interface CoordinatesData {
         y: number;
     };
 }
-declare class MapCoordinatesTracker {
-    private readonly map;
-    private readonly display;
-    private readonly options;
-    private lastUpdate;
-    private animationFrameId;
-    private rect;
-    constructor(mapSelector: string, displaySelector: string, options?: MapCoordinatesOptions);
-    private init;
-    private calculateCoordinates;
-    private defaultFormatCoordinates;
+interface PinData {
+    id: string;
+    x: number;
+    y: number;
+    category: string;
+    label?: string;
+}
+type Theme = 'light' | 'dark';
+declare class NermalApp {
+    private mapContainer;
+    private coordinatesDisplay;
+    private mapImg;
+    private pins;
+    private pinLayer;
+    private zoom;
+    private pan;
+    private isPanning;
+    private panStart;
+    private theme;
+    private gridOverlay;
+    private showGrid;
+    private categories;
+    private selectedCategory;
+    constructor();
+    private initUI;
+    private handleMapUpload;
+    private loadMap;
+    private handleZoom;
+    private startPan;
+    private panMove;
+    private endPan;
+    private applyTransform;
     private handleMouseMove;
-    private updateCoordinates;
-    private handleMouseLeave;
-    destroy(): void;
-    setOptions(newOptions: Partial<MapCoordinatesOptions>): void;
+    private calculateCoordinates;
+    private formatCoordinates;
+    private addPinAtEvent;
+    private renderPins;
+    private editOrRemovePin;
+    private exportPins;
+    private importPins;
+    private toggleTheme;
+    private initTheme;
+    private toggleGrid;
+    private updateGridOverlay;
 }

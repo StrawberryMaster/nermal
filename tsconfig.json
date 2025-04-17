@@ -21,6 +21,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["scripts/**/*", "nermalsrc.js"],
+  "include": ["scripts/**/*"],
   "exclude": ["node_modules", "dist"]
 }

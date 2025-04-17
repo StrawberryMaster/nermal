@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Danula testing ground</title>
+  <title>Nermal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description" content="A testing ground for the Danula world map">
@@ -15,12 +15,20 @@
 
 <body>
   <header>
-    <h1>Danula testing ground</h1>
+    <h1>Nermal</h1>
+    <div class="toolbar">
+      <input type="file" id="map-upload" accept="image/png,image/jpeg,image/webp" />
+      <button id="theme-toggle" aria-label="Change theme">🌗</button>
+      <button id="export-pins" aria-label="Export pins">Export pins</button>
+      <button id="import-pins" aria-label="Import pins">Import pins</button>
+      <button id="toggle-grid" aria-label="Display grid">Grid</button>
+      <button id="measure-tool" aria-label="Measure tool">Measure</button>
+    </div>
   </header>
 
-  <div class="map-container">
-    <img src="media/realcolorentireworld.png" class="map" usemap="#map">
+  <div class="map-container" id="map-container">
     <div class="coordinates" id="hover-coordinates"></div>
+    <canvas id="grid-overlay" style="display:none; position:absolute; left:0; top:0; pointer-events:none;"></canvas>
   </div>
 
   <footer>
@@ -29,13 +37,6 @@
   </footer>
 
   <script src="scripts/nermal.js"></script>
-  <script>
-    const tracker = new MapCoordinatesTracker('.map', 'hover-coordinates', {
-      precision: 2,
-      useThrottle: true,
-      throttleInterval: 16  // ~60fps
-    });
-  </script>
 </body>
 
 </html>
